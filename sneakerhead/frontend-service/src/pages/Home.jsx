@@ -1,6 +1,7 @@
 // sneakerhead/frontend-service/src/pages/Home.jsx
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { ArrowRight, Shield, RotateCcw, Lock, TrendingUp } from 'lucide-react';
 import productService from '../services/productService';
 import ProductCard from '../components/ProductCard';
 
@@ -11,8 +12,6 @@ const BRANDS = [
   { name: 'New Balance', logo: 'NB' },
   { name: 'Puma', logo: '🐆' },
   { name: 'Asics', logo: 'ᴬ' },
-  { name: 'Reebok', logo: 'Ⓡ' },
-  { name: 'Converse', logo: '★' },
 ];
 
 const CATEGORIES = [
@@ -50,25 +49,40 @@ export default function Home() {
     <div className="home-page">
       {/* Hero Section */}
       <section className="hero">
+        <div className="hero-bg">
+          <img
+            src="https://images.unsplash.com/photo-1556906781-9348caca9b23?w=1400&h=700&fit=crop&auto=format"
+            alt="Sneaker collection"
+            className="hero-bg-img"
+          />
+          <div className="hero-overlay"></div>
+        </div>
         <div className="hero-content">
+          <div className="hero-badge"><TrendingUp size={14} /> NEW SEASON 2024</div>
           <h1 className="hero-title">
             STEP INTO<br />THE <span className="accent">CULTURE</span>
           </h1>
           <p className="hero-subtitle">
-            Discover the latest drops from the world's most iconic sneaker brands. 
+            Discover the latest drops from the world's most iconic sneaker brands.
             Authentic. Premium. Delivered to your door.
           </p>
-          <Link to="/products" className="hero-cta">
-            Shop Now
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </Link>
+          <div className="hero-ctas">
+            <Link to="/products" className="hero-cta">
+              Shop Now <ArrowRight size={20} />
+            </Link>
+            <Link to="/products?sort_by=newest" className="hero-cta-secondary">
+              Latest Drops
+            </Link>
+          </div>
         </div>
         <div className="hero-visual">
-          <div className="hero-shoe-animation">
-            <div className="floating-shoe">👟</div>
-            <div className="glow-ring"></div>
+          <div className="hero-shoe-container">
+            <img
+              src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&h=600&fit=crop&auto=format"
+              alt="Featured sneaker"
+              className="hero-shoe-img"
+            />
+            <div className="hero-glow"></div>
           </div>
         </div>
       </section>
@@ -93,7 +107,7 @@ export default function Home() {
       <section className="section">
         <div className="section-header">
           <h2 className="section-title">Latest <span className="accent">Drops</span></h2>
-          <Link to="/products?sort_by=newest" className="section-link">View All →</Link>
+          <Link to="/products?sort_by=newest" className="section-link">View All <ArrowRight size={16} /></Link>
         </div>
         <div className="product-grid-4">
           {loading
@@ -124,7 +138,7 @@ export default function Home() {
       <section className="section">
         <div className="section-header">
           <h2 className="section-title">Trending <span className="accent">Now</span></h2>
-          <Link to="/products?sort_by=popular" className="section-link">See More →</Link>
+          <Link to="/products?sort_by=popular" className="section-link">See More <ArrowRight size={16} /></Link>
         </div>
         <div className="trending-scroll">
           {trending.map((p) => (
@@ -138,15 +152,15 @@ export default function Home() {
       {/* Trust Banner */}
       <section className="trust-banner">
         <div className="trust-item">
-          <span className="trust-icon">✓</span>
+          <Shield size={28} className="trust-icon" />
           <span>100% Authentic</span>
         </div>
         <div className="trust-item">
-          <span className="trust-icon">↩</span>
+          <RotateCcw size={28} className="trust-icon" />
           <span>Free Returns</span>
         </div>
         <div className="trust-item">
-          <span className="trust-icon">🔒</span>
+          <Lock size={28} className="trust-icon" />
           <span>Secure Checkout</span>
         </div>
       </section>

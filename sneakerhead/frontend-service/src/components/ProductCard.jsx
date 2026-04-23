@@ -55,7 +55,7 @@ export default function ProductCard({ product }) {
       <Link to={`/products/${product.id}`} className="product-card-link">
         <div className="product-card-image">
           <img
-            src={product.images?.[0] || 'https://placehold.co/600x600/1a1a1a/ffffff?text=Sneaker'}
+            src={product.images?.[0] || 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&h=600&fit=crop'}
             alt={product.name}
             loading="lazy"
           />
@@ -73,10 +73,10 @@ export default function ProductCard({ product }) {
             <span className="product-colorway">{product.colorway}</span>
           )}
           <div className="product-price-row">
-            <span className="product-price">${product.price.toFixed(2)}</span>
+            <span className="product-price">₹{product.price.toFixed(2)}</span>
             {product.compare_at_price && product.compare_at_price > product.price && (
               <span className="product-compare-price">
-                ${product.compare_at_price.toFixed(2)}
+                ₹{product.compare_at_price.toFixed(2)}
               </span>
             )}
           </div>

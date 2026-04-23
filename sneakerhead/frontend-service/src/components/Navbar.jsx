@@ -1,6 +1,7 @@
 // sneakerhead/frontend-service/src/components/Navbar.jsx
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { Search, ShoppingBag, Menu, X, User, LogOut, Package } from 'lucide-react';
 import useAuthStore from '../store/authStore';
 import useCartStore from '../store/cartStore';
 
@@ -30,7 +31,7 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="navbar-inner">
         <Link to="/" className="navbar-brand">
-          <span className="brand-icon">👟</span>
+          <span className="brand-icon">SH</span>
           <span className="brand-text">SNEAKER<span className="accent">HEAD</span></span>
         </Link>
 
@@ -42,10 +43,7 @@ export default function Navbar() {
             onChange={(e) => setSearchQuery(e.target.value)}
           />
           <button type="submit" aria-label="Search">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <circle cx="11" cy="11" r="8" />
-              <path d="M21 21l-4.35-4.35" />
-            </svg>
+            <Search size={18} />
           </button>
         </form>
 
@@ -54,9 +52,9 @@ export default function Navbar() {
 
           {isAuthenticated ? (
             <>
-              <Link to="/orders" className="nav-link">Orders</Link>
-              <Link to="/profile" className="nav-link">Profile</Link>
-              <button onClick={handleLogout} className="nav-link nav-btn">Logout</button>
+              <Link to="/orders" className="nav-link"><Package size={16} /> Orders</Link>
+              <Link to="/profile" className="nav-link"><User size={16} /> Profile</Link>
+              <button onClick={handleLogout} className="nav-link nav-btn"><LogOut size={16} /> Logout</button>
             </>
           ) : (
             <>
@@ -70,27 +68,13 @@ export default function Navbar() {
             onClick={() => setDrawerOpen(true)}
             aria-label="Open cart"
           >
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
-              <line x1="3" y1="6" x2="21" y2="6" />
-              <path d="M16 10a4 4 0 01-8 0" />
-            </svg>
+            <ShoppingBag size={22} />
             {itemCount > 0 && <span className="cart-badge">{itemCount}</span>}
           </button>
         </div>
 
         <button className="mobile-menu-btn" onClick={() => setMenuOpen(!menuOpen)}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            {menuOpen ? (
-              <path d="M18 6L6 18M6 6l12 12" />
-            ) : (
-              <>
-                <line x1="3" y1="6" x2="21" y2="6" />
-                <line x1="3" y1="12" x2="21" y2="12" />
-                <line x1="3" y1="18" x2="21" y2="18" />
-              </>
-            )}
-          </svg>
+          {menuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 

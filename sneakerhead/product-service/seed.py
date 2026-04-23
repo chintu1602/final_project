@@ -361,11 +361,30 @@ def _generate_sizes_inventory() -> dict:
     return sizes
 
 
+_SNEAKER_PHOTOS = [
+    "photo-1542291026-7eec264c27ff",
+    "photo-1606107557195-0e29a4b5b4aa",
+    "photo-1549298916-b41d501d3772",
+    "photo-1600185365926-3a2ce3cdb9eb",
+    "photo-1595950653106-6c9ebd614d3a",
+    "photo-1584735175315-9d5df23860e6",
+    "photo-1579338559194-a162d19bf842",
+    "photo-1560769629-975ec94e6a86",
+    "photo-1605348532760-6753d2c43329",
+    "photo-1608231387042-66d1773070a5",
+    "photo-1556906781-9348caca9b23",
+    "photo-1518002171953-a080ee817e1f",
+    "photo-1551107696-a4b0c5a0d9a2",
+    "photo-1525966222134-fcfa99b8ae77",
+    "photo-1491553895911-0055eca6402d",
+]
+
+
 def _generate_images(sku: str) -> list:
-    """Generate 3 placeholder image URLs per product."""
-    colors = ["e8ff00", "1a1a1a", "333333"]
+    """Generate 3 real sneaker image URLs per product using Unsplash."""
+    idx = sum(ord(c) for c in sku) % len(_SNEAKER_PHOTOS)
     return [
-        f"https://placehold.co/600x600/{colors[i]}/ffffff?text={sku.replace('-', '+')}"
+        f"https://images.unsplash.com/{_SNEAKER_PHOTOS[(idx + i) % len(_SNEAKER_PHOTOS)]}?w=600&h=600&fit=crop&auto=format"
         for i in range(3)
     ]
 

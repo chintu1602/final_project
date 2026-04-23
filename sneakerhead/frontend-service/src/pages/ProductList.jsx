@@ -116,8 +116,8 @@ export default function ProductList() {
   if (filters.brands.length) filters.brands.forEach(b => activeChips.push({ label: b, type: 'brand', value: b }));
   if (filters.category) activeChips.push({ label: filters.category, type: 'category', value: filters.category });
   if (filters.sizes.length) filters.sizes.forEach(s => activeChips.push({ label: `US ${s}`, type: 'size', value: s }));
-  if (filters.minPrice) activeChips.push({ label: `Min $${filters.minPrice}`, type: 'minPrice' });
-  if (filters.maxPrice) activeChips.push({ label: `Max $${filters.maxPrice}`, type: 'maxPrice' });
+  if (filters.minPrice) activeChips.push({ label: `Min ₹${filters.minPrice}`, type: 'minPrice' });
+  if (filters.maxPrice) activeChips.push({ label: `Max ₹${filters.maxPrice}`, type: 'maxPrice' });
   if (filters.inStock) activeChips.push({ label: 'In Stock', type: 'inStock' });
 
   const removeChip = (chip) => {

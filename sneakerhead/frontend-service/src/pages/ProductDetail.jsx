@@ -122,7 +122,7 @@ export default function ProductDetail() {
         <div className="product-gallery">
           <div className="main-image">
             <img
-              src={product.images?.[selectedImage] || 'https://placehold.co/600x600/1a1a1a/ffffff?text=Sneaker'}
+              src={product.images?.[selectedImage] || 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&h=600&fit=crop'}
               alt={product.name}
             />
           </div>
@@ -158,12 +158,12 @@ export default function ProductDetail() {
           </div>
 
           <div className="product-detail-price">
-            <span className="current-price">${product.price.toFixed(2)}</span>
+            <span className="current-price">₹{product.price.toFixed(2)}</span>
             {product.compare_at_price && product.compare_at_price > product.price && (
               <>
-                <span className="compare-price">${product.compare_at_price.toFixed(2)}</span>
+                <span className="compare-price">₹{product.compare_at_price.toFixed(2)}</span>
                 <span className="save-badge">
-                  Save ${(product.compare_at_price - product.price).toFixed(2)}
+                  Save ₹{(product.compare_at_price - product.price).toFixed(2)}
                 </span>
               </>
             )}

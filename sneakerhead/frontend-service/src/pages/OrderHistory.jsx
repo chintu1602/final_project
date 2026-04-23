@@ -71,11 +71,11 @@ export default function OrderHistory() {
               </span>
               <div className="order-thumbs">
                 {order.items?.slice(0, 3).map((item, i) => (
-                  <img key={i} src={item.product_image || 'https://placehold.co/40x40'} alt="" className="order-thumb" />
+                  <img key={i} src={item.product_image || 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=40&h=40&fit=crop'} alt="" className="order-thumb" />
                 ))}
                 {order.items?.length > 3 && <span className="more-items">+{order.items.length - 3}</span>}
               </div>
-              <span className="order-total">${order.total.toFixed(2)}</span>
+              <span className="order-total">₹{order.total.toFixed(2)}</span>
               <span className="expand-icon">{expandedOrder === order.id ? '▲' : '▼'}</span>
             </div>
 
@@ -83,12 +83,12 @@ export default function OrderHistory() {
               <div className="order-card-expanded">
                 {order.items?.map((item) => (
                   <div key={item.id} className="order-item-row">
-                    <img src={item.product_image || 'https://placehold.co/60x60'} alt={item.product_name} />
+                    <img src={item.product_image || 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=60&h=60&fit=crop'} alt={item.product_name} />
                     <div className="order-item-info">
                       <span className="item-name">{item.product_name}</span>
                       <span>Size: {item.size} × {item.quantity}</span>
                     </div>
-                    <span>${(item.price * item.quantity).toFixed(2)}</span>
+                    <span>₹{(item.price * item.quantity).toFixed(2)}</span>
                   </div>
                 ))}
                 <Link to={`/orders/${order.id}`} className="view-detail-link">View Full Details →</Link>

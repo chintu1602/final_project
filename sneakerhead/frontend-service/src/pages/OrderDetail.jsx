@@ -68,14 +68,14 @@ export default function OrderDetail() {
           <h3>Items</h3>
           {order.items?.map((item) => (
             <div key={item.id} className="order-detail-item">
-              <img src={item.product_image || 'https://placehold.co/80x80'} alt={item.product_name} />
+              <img src={item.product_image || 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=80&h=80&fit=crop'} alt={item.product_name} />
               <div className="item-info">
                 <h4>{item.product_name}</h4>
                 <span>Size: US {item.size}</span>
                 <span>Qty: {item.quantity}</span>
-                <span>${item.price.toFixed(2)} each</span>
+                <span>₹{item.price.toFixed(2)} each</span>
               </div>
-              <span className="item-total">${(item.price * item.quantity).toFixed(2)}</span>
+              <span className="item-total">₹{(item.price * item.quantity).toFixed(2)}</span>
             </div>
           ))}
         </div>
@@ -83,10 +83,10 @@ export default function OrderDetail() {
         <div className="order-detail-sidebar">
           <div className="order-summary-card">
             <h3>Order Summary</h3>
-            <div className="summary-row"><span>Subtotal</span><span>${order.subtotal.toFixed(2)}</span></div>
-            <div className="summary-row"><span>Shipping</span><span>{order.shipping_fee === 0 ? 'Free' : `$${order.shipping_fee.toFixed(2)}`}</span></div>
-            <div className="summary-row"><span>Tax</span><span>${order.tax.toFixed(2)}</span></div>
-            <div className="summary-row total"><span>Total</span><span>${order.total.toFixed(2)}</span></div>
+            <div className="summary-row"><span>Subtotal</span><span>₹{order.subtotal.toFixed(2)}</span></div>
+            <div className="summary-row"><span>Shipping</span><span>{order.shipping_fee === 0 ? 'Free' : `₹${order.shipping_fee.toFixed(2)}`}</span></div>
+            <div className="summary-row"><span>Tax</span><span>₹{order.tax.toFixed(2)}</span></div>
+            <div className="summary-row total"><span>Total</span><span>₹{order.total.toFixed(2)}</span></div>
           </div>
 
           {order.shipping_address && (
