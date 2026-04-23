@@ -1,7 +1,7 @@
 // sneakerhead/frontend-service/src/pages/Home.jsx
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Shield, RotateCcw, Lock, TrendingUp } from 'lucide-react';
+import { ArrowRight, Shield, RotateCcw, Lock, TrendingUp, Zap, Target, Sparkles, Wind, Dumbbell } from 'lucide-react';
 import productService from '../services/productService';
 import ProductCard from '../components/ProductCard';
 
@@ -15,11 +15,11 @@ const BRANDS = [
 ];
 
 const CATEGORIES = [
-  { name: 'Running', emoji: '🏃', color: '#e8ff00' },
-  { name: 'Basketball', emoji: '🏀', color: '#ff6b35' },
-  { name: 'Lifestyle', emoji: '🔥', color: '#a855f7' },
-  { name: 'Skate', emoji: '🛹', color: '#06b6d4' },
-  { name: 'Training', emoji: '💪', color: '#22c55e' },
+  { name: 'Running', icon: Zap, color: '#e8ff00' },
+  { name: 'Basketball', icon: Target, color: '#ff6b35' },
+  { name: 'Lifestyle', icon: Sparkles, color: '#a855f7' },
+  { name: 'Skate', icon: Wind, color: '#06b6d4' },
+  { name: 'Training', icon: Dumbbell, color: '#22c55e' },
 ];
 
 export default function Home() {
@@ -127,7 +127,7 @@ export default function Home() {
               className="category-tile"
               style={{ '--tile-color': cat.color }}
             >
-              <span className="cat-emoji">{cat.emoji}</span>
+              <cat.icon size={32} color={cat.color} className="cat-icon" />
               <span className="cat-name">{cat.name}</span>
             </Link>
           ))}

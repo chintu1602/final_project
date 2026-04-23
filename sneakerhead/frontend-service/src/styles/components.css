@@ -54,9 +54,10 @@
 
 /* ── Category Tiles ────────────────── */
 .category-tiles { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
-.category-tile { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 32px 16px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); transition: var(--transition); text-align: center; }
+.category-tile { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 32px 16px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); transition: var(--transition); text-align: center; }
 .category-tile:hover { border-color: var(--tile-color, var(--accent)); transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
-.cat-emoji { font-size: 36px; }
+.cat-icon { transition: var(--transition); }
+.category-tile:hover .cat-icon { transform: scale(1.15); }
 .cat-name { font-weight: 600; font-size: 14px; color: var(--text-secondary); }
 .category-tile:hover .cat-name { color: var(--text); }
 @media (max-width: 768px) { .category-tiles { grid-template-columns: repeat(3, 1fr); } }

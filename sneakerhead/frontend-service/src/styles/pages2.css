@@ -201,8 +201,9 @@
 .footer-inner { max-width: 1400px; margin: 0 auto; padding: 48px 24px; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.5fr; gap: 40px; }
 .footer-brand { font-size: 18px; font-weight: 800; letter-spacing: 1px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
 .footer-desc { color: var(--text-muted); font-size: 14px; line-height: 1.6; margin-bottom: 16px; }
-.social-icons { display: flex; gap: 12px; }
-.social-icons a { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 50%; color: var(--text-secondary); transition: var(--transition); }
+.social-icons { display: flex; gap: 12px; align-items: center; flex-wrap: nowrap; }
+.social-icons a { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; min-width: 40px; min-height: 40px; padding: 0; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 50%; color: var(--text-secondary); transition: var(--transition); overflow: hidden; box-sizing: border-box; text-decoration: none; }
+.social-icons a svg { width: 18px; height: 18px; min-width: 18px; min-height: 18px; flex-shrink: 0; display: block; }
 .social-icons a:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-dim); }
 .footer-col h4 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text); margin-bottom: 16px; }
 .footer-col a { display: block; color: var(--text-muted); font-size: 14px; padding: 4px 0; transition: var(--transition); }
