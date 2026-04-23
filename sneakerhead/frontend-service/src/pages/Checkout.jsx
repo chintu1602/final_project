@@ -25,7 +25,7 @@ export default function Checkout() {
     city: '',
     state: '',
     zip_code: '',
-    country: 'US',
+    country: 'India',
   });
 
   const [payment, setPayment] = useState({
@@ -225,12 +225,12 @@ export default function Checkout() {
                 <h3>Items ({items.length})</h3>
                 {items.map((item) => (
                   <div key={item.id} className="review-item">
-                    <img src={item.product_image || 'https://placehold.co/60x60'} alt={item.product_name} />
+                    <img src={item.product_image || 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=60&h=60&fit=crop'} alt={item.product_name} />
                     <div>
                       <span>{item.product_name}</span>
                       <span>Size: {item.size} × {item.quantity}</span>
                     </div>
-                    <span>${(item.price * item.quantity).toFixed(2)}</span>
+                    <span>₹{(item.price * item.quantity).toFixed(2)}</span>
                   </div>
                 ))}
               </div>
@@ -257,14 +257,14 @@ export default function Checkout() {
             {items.map((item) => (
               <div key={item.id} className="summary-mini-item">
                 <span>{item.product_name} (×{item.quantity})</span>
-                <span>${(item.price * item.quantity).toFixed(2)}</span>
+                <span>₹{(item.price * item.quantity).toFixed(2)}</span>
               </div>
             ))}
           </div>
-          <div className="summary-row"><span>Subtotal</span><span>${subtotal.toFixed(2)}</span></div>
-          <div className="summary-row"><span>Shipping</span><span>{shipping_fee === 0 ? 'Free' : `$${shipping_fee.toFixed(2)}`}</span></div>
-          <div className="summary-row"><span>Tax (8%)</span><span>${tax.toFixed(2)}</span></div>
-          <div className="summary-row total"><span>Total</span><span>${total.toFixed(2)}</span></div>
+          <div className="summary-row"><span>Subtotal</span><span>₹{subtotal.toFixed(2)}</span></div>
+          <div className="summary-row"><span>Shipping</span><span>{shipping_fee === 0 ? 'Free' : `₹${shipping_fee.toFixed(2)}`}</span></div>
+          <div className="summary-row"><span>Tax (8%)</span><span>₹{tax.toFixed(2)}</span></div>
+          <div className="summary-row total"><span>Total</span><span>₹{total.toFixed(2)}</span></div>
         </div>
       </div>
     </div>

@@ -55,7 +55,7 @@ export default function ProductCard({ product }) {
       <Link to={`/products/${product.id}`} className="product-card-link">
         <div className="product-card-image">
           <img
-            src={product.images?.[0] || 'https://placehold.co/600x600/1a1a1a/ffffff?text=Sneaker'}
+            src={product.images?.[0] || 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&h=600&fit=crop'}
             alt={product.name}
             loading="lazy"
           />
@@ -63,6 +63,33 @@ export default function ProductCard({ product }) {
           {isOutOfStock && <span className="badge-out-stock">Sold Out</span>}
           {product.compare_at_price && product.compare_at_price > product.price && (
             <span className="badge-sale">Sale</span>
+          )}
+
+          {hovered && availableSizes.length > 0 && (
+            <div className="quick-add-overlay">
+              <div className="quick-sizes">
+                {availableSizes.slice(0, 7).map((size) => (
+                  <button
+                    key={size}
+                    className={`quick-size-btn ${selectedSize === size ? 'selected' : ''}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      setSelectedSize(size);
+                    }}
+                  >
+                    {size}
+                  </button>
+                ))}
+              </div>
+              <button
+                className="quick-add-btn"
+                onClick={handleQuickAdd}
+                disabled={!selectedSize}
+              >
+                {selectedSize ? 'Add to Cart' : 'Select Size'}
+              </button>
+            </div>
           )}
         </div>
 
@@ -73,10 +100,10 @@ export default function ProductCard({ product }) {
             <span className="product-colorway">{product.colorway}</span>
           )}
           <div className="product-price-row">
-            <span className="product-price">${product.price.toFixed(2)}</span>
+            <span className="product-price">₹{product.price.toFixed(2)}</span>
             {product.compare_at_price && product.compare_at_price > product.price && (
               <span className="product-compare-price">
-                ${product.compare_at_price.toFixed(2)}
+                ₹{product.compare_at_price.toFixed(2)}
               </span>
             )}
           </div>
@@ -87,33 +114,7 @@ export default function ProductCard({ product }) {
           </div>
         </div>
       </Link>
-
-      {hovered && availableSizes.length > 0 && (
-        <div className="quick-add-overlay">
-          <div className="quick-sizes">
-            {availableSizes.slice(0, 7).map((size) => (
-              <button
-                key={size}
-                className={`quick-size-btn ${selectedSize === size ? 'selected' : ''}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  setSelectedSize(size);
-                }}
-              >
-                {size}
-              </button>
-            ))}
-          </div>
-          <button
-            className="quick-add-btn"
-            onClick={handleQuickAdd}
-            disabled={!selectedSize}
-          >
-            {selectedSize ? 'Add to Cart' : 'Select Size'}
-          </button>
-        </div>
-      )}
     </div>
   );
 }
+

@@ -1,6 +1,7 @@
 // sneakerhead/frontend-service/src/components/Footer.jsx
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Send, Twitter, Instagram, Facebook, Youtube } from 'lucide-react';
 
 export default function Footer() {
   const [email, setEmail] = useState('');
@@ -20,16 +21,16 @@ export default function Footer() {
       <div className="footer-inner">
         <div className="footer-col">
           <h3 className="footer-brand">
-            <span className="brand-icon">👟</span> SNEAKER<span className="accent">HEAD</span>
+            <span className="brand-icon">SH</span> SNEAKER<span className="accent">HEAD</span>
           </h3>
           <p className="footer-desc">
             Your premium destination for authentic sneakers from the world's top brands.
           </p>
           <div className="social-icons">
-            <a href="#" aria-label="Twitter">𝕏</a>
-            <a href="#" aria-label="Instagram">📷</a>
-            <a href="#" aria-label="Facebook">📘</a>
-            <a href="#" aria-label="YouTube">▶</a>
+            <a href="#" aria-label="Twitter"><Twitter size={18} /></a>
+            <a href="#" aria-label="Instagram"><Instagram size={18} /></a>
+            <a href="#" aria-label="Facebook"><Facebook size={18} /></a>
+            <a href="#" aria-label="YouTube"><Youtube size={18} /></a>
           </div>
         </div>
 
@@ -64,7 +65,7 @@ export default function Footer() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
-              <button type="submit">→</button>
+              <button type="submit"><Send size={16} /></button>
             </form>
           )}
         </div>
