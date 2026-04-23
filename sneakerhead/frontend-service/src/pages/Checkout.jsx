@@ -25,7 +25,7 @@ export default function Checkout() {
     city: '',
     state: '',
     zip_code: '',
-    country: 'US',
+    country: 'India',
   });
 
   const [payment, setPayment] = useState({

@@ -1,25 +1,46 @@
 // sneakerhead/frontend-service/src/pages/Home.jsx
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Shield, RotateCcw, Lock, TrendingUp } from 'lucide-react';
+import { ArrowRight, Shield, RotateCcw, Lock, TrendingUp, Zap, Sparkles, Dumbbell } from 'lucide-react';
 import productService from '../services/productService';
 import ProductCard from '../components/ProductCard';
 
+// Custom SVG icons for categories not in Lucide
+const BasketballIcon = ({ size = 24, color = 'currentColor', ...props }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <circle cx="12" cy="12" r="10" />
+    <path d="M2.1 12h19.8" />
+    <path d="M12 2.1v19.8" />
+    <path d="M5.6 5.6c2.2 2.2 3.4 5 3.4 8.1s-1.2 5.9-3.4 8.1" />
+    <path d="M18.4 5.6c-2.2 2.2-3.4 5-3.4 8.1s1.2 5.9 3.4 8.1" />
+  </svg>
+);
+
+const SkateboardIcon = ({ size = 24, color = 'currentColor', ...props }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <rect x="3" y="10" width="18" height="4" rx="2" />
+    <circle cx="7" cy="17" r="2" />
+    <circle cx="17" cy="17" r="2" />
+    <line x1="7" y1="14" x2="7" y2="15" />
+    <line x1="17" y1="14" x2="17" y2="15" />
+  </svg>
+);
+
 const BRANDS = [
-  { name: 'Nike', logo: '✓' },
-  { name: 'Adidas', logo: '⊞' },
-  { name: 'Jordan', logo: '🏀' },
+  { name: 'Nike', logo: 'NK' },
+  { name: 'Adidas', logo: 'AD' },
+  { name: 'Jordan', logo: 'JD' },
   { name: 'New Balance', logo: 'NB' },
-  { name: 'Puma', logo: '🐆' },
-  { name: 'Asics', logo: 'ᴬ' },
+  { name: 'Puma', logo: 'PM' },
+  { name: 'Asics', logo: 'AS' },
 ];
 
 const CATEGORIES = [
-  { name: 'Running', emoji: '🏃', color: '#e8ff00' },
-  { name: 'Basketball', emoji: '🏀', color: '#ff6b35' },
-  { name: 'Lifestyle', emoji: '🔥', color: '#a855f7' },
-  { name: 'Skate', emoji: '🛹', color: '#06b6d4' },
-  { name: 'Training', emoji: '💪', color: '#22c55e' },
+  { name: 'Running', icon: Zap, color: '#e8ff00' },
+  { name: 'Basketball', icon: BasketballIcon, color: '#ff6b35' },
+  { name: 'Lifestyle', icon: Sparkles, color: '#a855f7' },
+  { name: 'Skate', icon: SkateboardIcon, color: '#06b6d4' },
+  { name: 'Training', icon: Dumbbell, color: '#22c55e' },
 ];
 
 export default function Home() {
@@ -127,7 +148,7 @@ export default function Home() {
               className="category-tile"
               style={{ '--tile-color': cat.color }}
             >
-              <span className="cat-emoji">{cat.emoji}</span>
+              <cat.icon size={32} color={cat.color} className="cat-icon" />
               <span className="cat-name">{cat.name}</span>
             </Link>
           ))}

@@ -64,6 +64,33 @@ export default function ProductCard({ product }) {
           {product.compare_at_price && product.compare_at_price > product.price && (
             <span className="badge-sale">Sale</span>
           )}
+
+          {hovered && availableSizes.length > 0 && (
+            <div className="quick-add-overlay">
+              <div className="quick-sizes">
+                {availableSizes.slice(0, 7).map((size) => (
+                  <button
+                    key={size}
+                    className={`quick-size-btn ${selectedSize === size ? 'selected' : ''}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      setSelectedSize(size);
+                    }}
+                  >
+                    {size}
+                  </button>
+                ))}
+              </div>
+              <button
+                className="quick-add-btn"
+                onClick={handleQuickAdd}
+                disabled={!selectedSize}
+              >
+                {selectedSize ? 'Add to Cart' : 'Select Size'}
+              </button>
+            </div>
+          )}
         </div>
 
         <div className="product-card-info">
@@ -87,33 +114,7 @@ export default function ProductCard({ product }) {
           </div>
         </div>
       </Link>
-
-      {hovered && availableSizes.length > 0 && (
-        <div className="quick-add-overlay">
-          <div className="quick-sizes">
-            {availableSizes.slice(0, 7).map((size) => (
-              <button
-                key={size}
-                className={`quick-size-btn ${selectedSize === size ? 'selected' : ''}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  setSelectedSize(size);
-                }}
-              >
-                {size}
-              </button>
-            ))}
-          </div>
-          <button
-            className="quick-add-btn"
-            onClick={handleQuickAdd}
-            disabled={!selectedSize}
-          >
-            {selectedSize ? 'Add to Cart' : 'Select Size'}
-          </button>
-        </div>
-      )}
     </div>
   );
 }
+
