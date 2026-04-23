@@ -96,18 +96,18 @@ export default function FilterSidebar({
         <div className="price-range">
           <input
             type="number"
-            placeholder="$0"
+            placeholder="₹0"
             min="0"
-            max="500"
+            max="30000"
             value={filters.minPrice || ''}
             onChange={(e) => handlePriceChange('minPrice', e.target.value)}
           />
           <span>—</span>
           <input
             type="number"
-            placeholder="$500"
+            placeholder="₹30,000"
             min="0"
-            max="500"
+            max="30000"
             value={filters.maxPrice || ''}
             onChange={(e) => handlePriceChange('maxPrice', e.target.value)}
           />
@@ -115,9 +115,9 @@ export default function FilterSidebar({
         <input
           type="range"
           min="0"
-          max="500"
-          step="10"
-          value={filters.maxPrice || 500}
+          max="30000"
+          step="500"
+          value={filters.maxPrice || 30000}
           onChange={(e) => handlePriceChange('maxPrice', e.target.value)}
           className="price-slider"
         />

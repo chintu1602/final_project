@@ -94,7 +94,7 @@ export default function Cart() {
             <span>{shipping_fee === 0 ? 'Free' : `₹${shipping_fee.toFixed(2)}`}</span>
           </div>
           {shipping_fee > 0 && (
-            <p className="free-shipping-note">Free shipping on orders over ₹150</p>
+            <p className="free-shipping-note">Free shipping on orders over ₹15,000</p>
           )}
           <div className="summary-row">
             <span>Tax (8%)</span>

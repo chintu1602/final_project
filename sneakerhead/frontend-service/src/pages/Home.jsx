@@ -6,12 +6,12 @@ import productService from '../services/productService';
 import ProductCard from '../components/ProductCard';
 
 const BRANDS = [
-  { name: 'Nike', logo: '✓' },
-  { name: 'Adidas', logo: '⊞' },
-  { name: 'Jordan', logo: '🏀' },
+  { name: 'Nike', logo: 'NK' },
+  { name: 'Adidas', logo: 'AD' },
+  { name: 'Jordan', logo: 'JD' },
   { name: 'New Balance', logo: 'NB' },
-  { name: 'Puma', logo: '🐆' },
-  { name: 'Asics', logo: 'ᴬ' },
+  { name: 'Puma', logo: 'PM' },
+  { name: 'Asics', logo: 'AS' },
 ];
 
 const CATEGORIES = [
